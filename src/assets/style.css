@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.page-transition {
+  transition: opacity 0.3s ease-in-out;
+}
