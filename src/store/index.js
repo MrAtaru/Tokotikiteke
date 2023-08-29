@@ -15,6 +15,9 @@ import womens_clothing from "./modules/women's_clothing";
 import surahs from "./modules/surah";
 import brand from "./modules/brand";
 import user from "./modules/user";
+import keranjang from "./modules/keranjang";
+import order from "./modules/order";
+
 
 const store = createStore({
   state: {
@@ -36,6 +39,8 @@ const store = createStore({
     surahs,
     brand,
     user,
+    keranjang,
+    order
   },
 });
 

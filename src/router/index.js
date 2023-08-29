@@ -63,10 +63,25 @@ const router = createRouter({
       path: "/user",
       name: "user",
       component: () => import("../views/UserView.vue"),
-      beforeEnter: cekToken
-    }
+      beforeEnter: cekToken,
+    },
+    {
+      path: "/cart",
+      name: "cart",
+      component: () => import("../views/DetailCartView.vue"),
+    },
+    {
+      path: "/checkout",
+      name: "checkout",
+      component: () => import("../views/CheckOutView.vue"),
+    },
+    {
+      path: "/order/:orderCode",
+      name: "order",
+      component: () => import("../views/BilingView.vue"),
+      props: true,
+    },
   ],
-  
 });
 
 export default router;

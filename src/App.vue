@@ -7,10 +7,7 @@ import CartView from "./views/CartView.vue";
 
 <template>
   <Navbar />
-  <CartView />
-  <transition name="page-transition" mode="out-in">
     <RouterView />
-  </transition>
   <footer class="bg-green-field dark:bg-gray-900">
     <div class="bg-dirt-color bg-bottom-half bg-left-right mx-auto w-full max-w-screen-1xl p-4 py-6 lg:py-8">
       <div class="md:flex md:justify-between">

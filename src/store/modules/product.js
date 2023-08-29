@@ -4,6 +4,7 @@ const product = {
   namespaced: true,
   state: {
     productData: [],
+    keranjang: [],
   },
 
   getters: {
@@ -39,6 +40,32 @@ const product = {
         console.log(error);
       }
     },
+    async addKeranjang({ commit,dispatch }, productId) {
+      const token = localStorage.getItem("access_token");
+      try {
+        const addCart = await axios.post(
+          "https://ecommerce.olipiskandar.com/api/v1/carts/add",
+          {
+            "variation_id": productId,
+            "qty": 1,
+            "temp_user_id": null,
+          },
+          {
+            headers: {
+              "Authorization": `Bearer ${token}`,
+            },
+          }
+        );
+        console.log("Output add cart:", addCart.data);
+        commit("ADD_KERANJANG", addCart.data);
+      } catch (error) {
+        alert(error);
+        console.log(error);
+      } finally {
+        dispatch("keranjang/fetchKeranjang", null, {root:true})
+      }
+    },
+    
   },
   mutations: {
     SET_PRODUCTS(state, products) {
@@ -46,6 +73,9 @@ const product = {
     },
     SET_SINGLE_PRODUCT(state, product) {
       state.singleProduct = product;
+    },
+    ADD_KERANJANG(state, keranjang) {
+      state.keranjang = keranjang;
     },
   },
 };
